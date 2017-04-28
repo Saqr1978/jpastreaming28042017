@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package streaming;
+package streaming.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -24,8 +28,13 @@ public class Pays implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false,length = 32)
-    
+    @Column(nullable = false, length = 32)
+    private String name;
+
+    @ManyToMany
+    @JoinTable(name = "film_pays")
+    Set<Film> films = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -58,5 +67,5 @@ public class Pays implements Serializable {
     public String toString() {
         return "streaming.Pays[ id=" + id + " ]";
     }
-    
+
 }

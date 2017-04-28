@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package streaming;
+package streaming.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,7 +31,9 @@ public class Serie implements Serializable {
     private Descriptif descriptif;
     @Column(nullable = false)
     private Integer nbSaison;
-    
+
+    @OneToMany(mappedBy = "serie")
+    private Set<Saison> saisons = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -62,5 +67,5 @@ public class Serie implements Serializable {
     public String toString() {
         return "streaming.Serie[ id=" + id + " ]";
     }
-    
+
 }

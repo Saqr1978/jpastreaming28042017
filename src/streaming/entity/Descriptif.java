@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package streaming;
+package streaming.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -14,11 +14,12 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class Descriptif {
-    @Column(length = 32,nullable = false)
+
+    @Column(length = 32, nullable = false)
     private String titre;
     @Column(length = 1024)
     private String description;
     private Integer annee;
     private Integer duree;
-    
+
 }
